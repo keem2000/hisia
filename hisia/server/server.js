@@ -30,7 +30,6 @@ app.get('/main.js', (req, res) => {
 app.post("/analyze", async (req, res) => {
     const content = req.body.content;
 
-    API_KEY = 'AIzaSyAe_F5EQe1xQ7mpYf_ZS9tiqCb3Sb5Pivo';
     DISCOVERY_URL =
         'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 
@@ -48,7 +47,7 @@ app.post("/analyze", async (req, res) => {
 
             await client.comments.analyze(
                 {
-                    key: API_KEY,
+                    key: process.env.API_KEY,
                     resource: analyzeRequest,
                 },
                 (err, response) => {
